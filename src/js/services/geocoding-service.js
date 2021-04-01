@@ -37,7 +37,7 @@ export default class GeocodingService {
       country,
       coordinates: {
         lat,
-        lng,
+        long: lng,
       },
       timezone: name,
     };
