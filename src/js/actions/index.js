@@ -25,4 +25,34 @@ const fetchLocation = (dispatch, locationService) => () => {
     .catch((err) => dispatch(locationError(err)));
 };
 
-export default fetchLocation;
+const geocodingRequested = () => {
+  return {
+    type: 'FETCH_GEOCODING_REQUEST',
+  };
+};
+
+const geocodingLoaded = (geocodingData) => {
+  return {
+    type: 'FETCH_GEOCODING_SUCCESS',
+    payload: geocodingData,
+  };
+};
+
+const geocodingError = (error) => {
+  return {
+    type: 'FETCH_GEOCODING_FAILURE',
+    payload: error,
+  };
+};
+
+const fetchGeocodingData = (dispatch, geocodingService, city) => () => {
+  dispatch(geocodingRequested());
+  geocodingService.getGeocodingData(city)
+    .then((geocodingData) => dispatch(geocodingLoaded(geocodingData)))
+    .catch((err) => dispatch(geocodingError(err)));
+};
+
+export {
+  fetchLocation,
+  fetchGeocodingData,
+};
