@@ -45,7 +45,7 @@ const geocodingError = (error) => {
   };
 };
 
-const fetchGeocodingData = (dispatch, geocodingService, city) => () => {
+const fetchGeocodingData = (dispatch, geocodingService) => (city) => {
   dispatch(geocodingRequested());
   geocodingService.getGeocodingData(city)
     .then((geocodingData) => dispatch(geocodingLoaded(geocodingData)))
