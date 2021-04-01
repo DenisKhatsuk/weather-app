@@ -1,7 +1,7 @@
 export default class LocationService {
   _apiBase = 'https://ipinfo.io/json?token=';
 
-  _apiKey = '9a5f3199e9ff19z';
+  _apiKey = '9a5f3199e9ff19';
 
   getLocation = async () => {
     const res = await fetch(`${this._apiBase}${this._apiKey}`);
@@ -16,10 +16,14 @@ export default class LocationService {
     loc,
     timezone,
   }) => {
+    const [lat, long] = loc.split(',');
     return {
       city,
       country,
-      coordinates: loc,
+      coordinates: {
+        lat,
+        long,
+      },
       timezone,
     };
   };

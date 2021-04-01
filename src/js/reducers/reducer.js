@@ -2,7 +2,10 @@ const initialState = {
   location: {
     city: '',
     country: '',
-    coordinates: '',
+    coordinates: {
+      lat: '',
+      long: '',
+    },
     timezone: '',
     isLoading: true,
     error: null,
