@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
       return {
         location: state.location,
       };
+
     case 'FETCH_LOCATION_SUCCESS':
       return {
         location: {
@@ -26,7 +27,31 @@ const reducer = (state = initialState, action) => {
           error: null,
         },
       };
+
     case 'FETCH_LOCATION_FAILURE':
+      return {
+        location: {
+          ...state.location,
+          isLoading: false,
+          error: action.payload,
+        },
+      };
+
+    case 'FETCH_GEOCODING_REQUEST':
+      return {
+        location: state.location,
+      };
+
+    case 'FETCH_GEOCODING_SUCCESS':
+      return {
+        location: {
+          ...action.payload,
+          isLoading: false,
+          error: null,
+        },
+      };
+
+    case 'FETCH_GEOCODING_FAILURE':
       return {
         location: {
           ...state.location,
