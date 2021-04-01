@@ -1,9 +1,11 @@
 const initialState = {
   location: {
-    city: 'Grodno',
-    country: 'BY',
-    coordinates: '53.6688,23.8223',
-    timezone: 'Europe/Minsk',
+    city: '',
+    country: '',
+    coordinates: '',
+    timezone: '',
+    isLoading: true,
+    error: null,
   },
 };
 
@@ -15,11 +17,19 @@ const reducer = (state = initialState, action) => {
       };
     case 'FETCH_LOCATION_SUCCESS':
       return {
-        location: action.payload,
+        location: {
+          ...action.payload,
+          isLoading: false,
+          error: null,
+        },
       };
     case 'FETCH_LOCATION_FAILURE':
       return {
-        location: state.location,
+        location: {
+          ...state.location,
+          isLoading: false,
+          error: action.payload,
+        },
       };
 
     default:

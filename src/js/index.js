@@ -13,9 +13,9 @@ const locationService = new LocationService();
 ReactDOM.render(
   <Provider store = { store }>
     <ErrorBoundary>
-    <LocationServiceProvider value = { locationService }>
-      <App />
-    </LocationServiceProvider>
+      <LocationServiceProvider value = { locationService }>
+        <App />
+      </LocationServiceProvider>
     </ErrorBoundary>
   </Provider>,
   document.getElementById('root'),

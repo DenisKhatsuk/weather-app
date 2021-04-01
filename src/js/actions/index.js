@@ -13,7 +13,7 @@ const locationLoaded = (location) => {
 
 const locationError = (error) => {
   return {
-    type: 'FETCH_LOCATION_SUCCESS',
+    type: 'FETCH_LOCATION_FAILURE',
     payload: error,
   };
 };

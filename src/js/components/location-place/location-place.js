@@ -3,6 +3,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import withLocationService from '../hoc-helpers';
 import fetchLocation from '../../actions';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 const LocationPlace = ({ city, country }) => {
   return (
@@ -12,20 +14,35 @@ const LocationPlace = ({ city, country }) => {
   );
 };
 
-const LocationPlaceWrapper = ({ city, country, fetchLocationAndDispatch }) => {
+const LocationPlaceWrapper = ({
+  city,
+  country,
+  isLoading,
+  error,
+  fetchLocationAndDispatch,
+}) => {
   useEffect(async () => {
     fetchLocationAndDispatch();
   }, []);
 
-  return (
-    <LocationPlace city = { city } country = { country }/>
-  );
+  if (isLoading) return <Spinner />;
+  if (error) return <ErrorIndicator error = {error} />;
+  return <LocationPlace city = { city } country = { country }/>;
 };
 
-const mapStateToProps = ({ location: { city, country } }) => {
+const mapStateToProps = ({
+  location: {
+    city,
+    country,
+    isLoading,
+    error,
+  },
+}) => {
   return {
     city,
     country,
+    isLoading,
+    error,
   };
 };
 
