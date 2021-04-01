@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import LocationPlace from '../location-place';
+import LocationWrapper from '../location-wrapper';
 import ErrorBoundary from '../error-boundary';
 import SearchForm from '../search-form';
 
@@ -14,7 +14,7 @@ const App = () => {
         <SearchForm />
       </ErrorBoundary>
       <ErrorBoundary>
-        <LocationPlace />
+        <LocationWrapper />
       </ErrorBoundary>
     </Fragment>
   );
