@@ -1,5 +1,7 @@
 const initialState = {
-  location: {},
+  location: {
+    place: 'Grodno, BY',
+  },
 };
 
 const reducer = (state = initialState, action) => {
