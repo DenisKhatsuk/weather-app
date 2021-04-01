@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Spinner from './components/spinner';
+
 const App = () => {
-  return <h1>Fancy Weather App</h1>;
+  return <Spinner />;
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
