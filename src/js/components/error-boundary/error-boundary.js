@@ -6,17 +6,19 @@ import './error-boundary.css';
 export default class ErrorBoundary extends Component {
   state = {
     hasError: false,
+    error: null,
   };
 
-  componentDidCatch() {
+  componentDidCatch(error) {
     this.setState({
       hasError: true,
+      error,
     });
   }
 
   render() {
-    const { hasError } = this.state;
-    const { children, error } = this.props;
+    const { hasError, error } = this.state;
+    const { children } = this.props;
 
     if (hasError) return <ErrorIndicator error = { error }/>;
     return children;
