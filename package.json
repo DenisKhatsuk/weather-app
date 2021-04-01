@@ -7,8 +7,8 @@
     "style": "sass --watch src/sass/style.scss style.css",
     "lint": "eslint ./src/js",
     "lint:fix": "eslint ./src/js --fix",
-    "dev": "webpack --mode development",
-    "prod": "webpack --mode production",
+    "dev": "webpack --mode=development",
+    "prod": "webpack --mode=production",
     "serve": "webpack serve --open"
   },
   "repository": {
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/DenisKhatsuk/weather-app#readme",
   "dependencies": {
-    "copy-webpack-plugin": "^8.1.0",
     "core-js": "^3.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
