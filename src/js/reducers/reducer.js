@@ -1,6 +1,9 @@
 const initialState = {
   location: {
-    place: 'Grodno, BY',
+    city: 'Grodno',
+    country: 'BY',
+    coordinates: '53.6688,23.8223',
+    timezone: 'Europe/Minsk',
   },
 };
 

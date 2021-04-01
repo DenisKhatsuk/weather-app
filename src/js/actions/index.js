@@ -18,8 +18,11 @@ const locationError = (error) => {
   };
 };
 
-export {
-  locationRequested,
-  locationLoaded,
-  locationError,
+const fetchLocation = (dispatch, locationService) => () => {
+  dispatch(locationRequested());
+  locationService.getLocation()
+    .then((location) => dispatch(locationLoaded(location)))
+    .catch((err) => dispatch(locationError(err)));
 };
+
+export default fetchLocation;

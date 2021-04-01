@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import withLocationService from '../hoc-helpers';
+import fetchLocation from '../../actions';
 
-const LocationPlace = ({ place }) => {
+const LocationPlace = ({ city, country }) => {
   return (
     <div className="location__place">
-      { place }
+      { `${city}, ${country}` }
     </div>
   );
 };
 
-const mapStateToProps = ({ location: { place } }) => {
+const LocationPlaceWrapper = ({ city, country, fetchLocationAndDispatch }) => {
+  useEffect(async () => {
+    fetchLocationAndDispatch();
+  }, []);
+
+  return (
+    <LocationPlace city = { city } country = { country }/>
+  );
+};
+
+const mapStateToProps = ({ location: { city, country } }) => {
   return {
-    place,
+    city,
+    country,
   };
 };
 
-export default connect(mapStateToProps)(LocationPlace);
+const mapDispatchToProps = (dispatch, { locationService }) => ({
+  fetchLocationAndDispatch: fetchLocation(dispatch, locationService),
+});
+
+export default compose(
+  withLocationService(),
+  connect(mapStateToProps, mapDispatchToProps),
+)(LocationPlaceWrapper);
