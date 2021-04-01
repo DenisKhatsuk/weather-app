@@ -6,7 +6,8 @@ export default class GeocodingService {
     const res = await fetch(requestLink);
     if (!res.ok) throw new Error(`Could not fetch data from geocoding service. Server respond status ${res.status}.`);
     const geocoding = await res.json();
-    return this._transformGeocodingData(geocoding);
+    if (geocoding.total_results) return this._transformGeocodingData(geocoding);
+    throw new Error('Requested location not found.');
   }
 
   _transformGeocodingData = ({
