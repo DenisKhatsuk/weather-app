@@ -16,7 +16,11 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_LOCATION_REQUEST':
       return {
-        location: state.location,
+        location: {
+          ...state.location,
+          isLoading: true,
+          error: null,
+        },
       };
 
     case 'FETCH_LOCATION_SUCCESS':
@@ -39,7 +43,11 @@ const reducer = (state = initialState, action) => {
 
     case 'FETCH_GEOCODING_REQUEST':
       return {
-        location: state.location,
+        location: {
+          ...state.location,
+          isLoading: true,
+          error: null,
+        },
       };
 
     case 'FETCH_GEOCODING_SUCCESS':
