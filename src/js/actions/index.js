@@ -52,7 +52,35 @@ const fetchGeocodingData = (dispatch, geocodingService) => (city) => {
     .catch((err) => dispatch(geocodingError(err)));
 };
 
+const forecastRequested = () => {
+  return {
+    type: 'FETCH_FORECAST_REQUEST',
+  };
+};
+
+const forecastLoaded = (forecast) => {
+  return {
+    type: 'FETCH_FORECAST_SUCCESS',
+    payload: forecast,
+  };
+};
+
+const forecastError = (error) => {
+  return {
+    type: 'FETCH_FORECAST_FAILURE',
+    payload: error,
+  };
+};
+
+const fetchForecast = (dispatch, forecastService) => (lat, long) => {
+  dispatch(forecastRequested());
+  forecastService.getForecast(lat, long)
+    .then((forecast) => dispatch(forecastLoaded(forecast)))
+    .catch((err) => dispatch(forecastError(err)));
+};
+
 export {
   fetchLocation,
   fetchGeocodingData,
+  fetchForecast,
 };
