@@ -4,6 +4,7 @@ import LocationWrapper from '../location-wrapper';
 import ErrorBoundary from '../error-boundary';
 import SearchForm from '../search-form';
 import ForecastWrapper from '../forecast-wrapper';
+import Map from '../map';
 
 import './app.scss';
 
@@ -19,6 +20,9 @@ const App = () => {
       </ErrorBoundary>
       <ErrorBoundary>
         <ForecastWrapper />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Map />
       </ErrorBoundary>
     </Fragment>
   );
