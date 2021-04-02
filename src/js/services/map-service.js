@@ -11,6 +11,10 @@ export default class MapService {
       center: [-74.5, 40],
       zoom: 11,
     });
+    const marker = new mapboxgl.Marker()
+      .setLngLat([-74.5, 40])
+      .addTo(map);
+
     return map;
   };
 }
