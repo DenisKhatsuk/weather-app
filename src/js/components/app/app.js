@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import LocationWrapper from '../location-wrapper';
 import ErrorBoundary from '../error-boundary';
-import SearchFormWrapper from '../search-form-wrapper';
+import Header from '../header';
 import ForecastWrapper from '../forecast-wrapper';
 import MapWrapper from '../map-wrapper';
 
@@ -10,10 +10,9 @@ import './app.scss';
 
 const App = () => {
   return (
-    <Fragment>
-      <h1>Fancy Weather App</h1>
+    <div className = 'app-weather'>
       <ErrorBoundary>
-        <SearchFormWrapper />
+        <Header />
       </ErrorBoundary>
       <ErrorBoundary>
         <LocationWrapper />
@@ -24,7 +23,7 @@ const App = () => {
       <ErrorBoundary>
         <MapWrapper />
       </ErrorBoundary>
-    </Fragment>
+    </div>
   );
 };
 
