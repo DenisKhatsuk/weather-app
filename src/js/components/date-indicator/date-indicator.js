@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './date-indicator.scss';
+
 const DateIndicator = ({ timezone, language = 'en-GB' }) => {
   const [date, setDate] = useState([]);
 
