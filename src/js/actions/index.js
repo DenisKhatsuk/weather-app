@@ -72,15 +72,42 @@ const forecastError = (error) => {
   };
 };
 
-const fetchForecast = (dispatch, forecastService) => (lat, long) => {
+const fetchForecast = (dispatch, forecastService) => (lat, long, mapContainerId) => {
   dispatch(forecastRequested());
-  forecastService.getForecast(lat, long)
+  forecastService.getForecast(lat, long, mapContainerId)
     .then((forecast) => dispatch(forecastLoaded(forecast)))
     .catch((err) => dispatch(forecastError(err)));
+};
+
+const mapRequested = () => {
+  return {
+    type: 'FETCH_MAP_REQUEST',
+  };
+};
+
+const mapLoaded = () => {
+  return {
+    type: 'FETCH_MAP_SUCCESS',
+  };
+};
+
+const mapError = (error) => {
+  return {
+    type: 'FETCH_MAP_FAILURE',
+    payload: error,
+  };
+};
+
+const fetchMap = (dispatch, mapService) => (lat, long) => {
+  dispatch(mapRequested());
+  mapService.getMap(lat, long)
+    .then(() => dispatch(mapLoaded()))
+    .catch((err) => dispatch(mapError(err)));
 };
 
 export {
   fetchLocation,
   fetchGeocodingData,
   fetchForecast,
+  fetchMap,
 };

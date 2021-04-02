@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
-import MapService from '../../services/map-service';
+import React from 'react';
 
 import './mapbox.css';
 import './map.scss';
 
-const mapService = new MapService();
-
 const Map = () => {
-  useEffect(() => {
-    mapService.getMap();
-  }, []);
   return (
     <div
       className = 'map'

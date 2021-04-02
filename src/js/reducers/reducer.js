@@ -23,6 +23,10 @@ const initialState = {
     isLoading: true,
     error: null,
   },
+  map: {
+    isLoading: true,
+    error: null,
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -112,6 +116,33 @@ const reducer = (state = initialState, action) => {
         ...state,
         forecast: {
           ...state.forecast,
+          isLoading: false,
+          error: action.payload,
+        },
+      };
+
+    case 'FETCH_MAP_REQUEST':
+      return {
+        ...state,
+        map: {
+          isLoading: true,
+          error: null,
+        },
+      };
+
+    case 'FETCH_MAP_SUCCESS':
+      return {
+        ...state,
+        map: {
+          isLoading: false,
+          error: null,
+        },
+      };
+
+    case 'FETCH_MAP_FAILURE':
+      return {
+        ...state,
+        map: {
           isLoading: false,
           error: action.payload,
         },
