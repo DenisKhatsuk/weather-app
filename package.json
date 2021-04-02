@@ -7,8 +7,8 @@
     "style": "sass --watch src/sass/style.scss style.css",
     "lint": "eslint ./src/js",
     "lint:fix": "eslint ./src/js --fix",
-    "dev": "webpack --mode development",
-    "prod": "webpack --mode production",
+    "dev": "webpack --mode=development",
+    "prod": "webpack --mode=production",
     "serve": "webpack serve --open"
   },
   "repository": {
@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/DenisKhatsuk/weather-app#readme",
   "dependencies": {
-    "copy-webpack-plugin": "^8.1.0",
     "core-js": "^3.10.0",
+    "mapbox-gl": "^2.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
@@ -36,6 +38,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.2.0",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

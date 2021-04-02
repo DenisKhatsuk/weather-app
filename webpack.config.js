@@ -2,16 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
 
   const config = {
     mode: isProduction ? 'production' : 'development',
-    devtool: isProduction ? 'none' : 'source-map',
+    devtool: isProduction ? false : 'source-map',
     watch: !isProduction,
-    entry: './src/index.js',
+    entry: './src/js/index.js',
     output: {
       filename: isProduction ? 'scripts-[hash:8].js' : undefined,
       path: path.join(__dirname, './dist'),
@@ -65,16 +64,12 @@ module.exports = (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Fancy Weather React',
-        template: './src/template/template.html',
+        template: './src/html/template/template.html',
+        favicon: './src/img/favicon.ico',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: 'styles.css',
-      }),
-      new CopyPlugin({
-        patterns: [
-          { from: 'src/img/', to: './src/img/' },
-        ],
       }),
     ],
   };

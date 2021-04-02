@@ -22,6 +22,7 @@ module.exports = {
     'arrow-body-style': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
     'no-plusplus': 'off',
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
     'react/prop-types': 'off',
     'class-methods-use-this': 'off',
     'react/jsx-uses-react': 1,
