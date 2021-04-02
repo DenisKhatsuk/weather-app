@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import ForecastService from '../../services/forecast-service';
 import { fetchForecast } from '../../actions';
 import ForecastToday from '../forecast-today';
+import ForecastDaily from '../forecast-daily';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 import './forecast-wrapper.scss';
 
@@ -17,9 +20,20 @@ const ForecastWrapper = ({
   useEffect(() => {
     if (lat) fetchForecastAndDispatch(lat, long);
   }, [lat, long]);
+
+  const {
+    today,
+    daily,
+    isLoading,
+    error,
+  } = forecast;
+
+  if (isLoading) return <Spinner />;
+  if (error) return <ErrorIndicator error = {error} />;
   return (
     <section className="forecast">
-      <ForecastToday today = { forecast.today }/>
+      <ForecastToday today = { today }/>
+      <ForecastDaily daily = { daily }/>
     </section>
   );
 };

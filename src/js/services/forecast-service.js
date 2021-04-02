@@ -11,31 +11,70 @@ export default class ForecastService {
     return this._transformForecast(forecast);
   }
 
+  _getDayFromTime = (date) => {
+    const language = 'en-GB';
+    const msInSecond = 1000;
+    const dateInMs = date * msInSecond;
+    const DATE = new Date(dateInMs);
+    const options = {
+      weekday: 'long',
+    };
+    return DATE.toLocaleString(language, options);
+  };
+
   _transformForecast = ({
     current: {
       temp,
       feels_like, /* eslint-disable-line */
-      humidity,
+      humidity: humidityToday,
       wind_speed, /* eslint-disable-line */
       weather: [
         {
           description,
-          icon,
+          icon: iconToday,
         },
       ],
     },
     daily,
   }) => {
-    return {
-      today: {
-        temp,
-        feelsLike: feels_like,
+    const forecastWeek = daily.map((day) => {
+      const {
+        dt,
+        temp: {
+          day: tempDay,
+          night: tempNight,
+        },
         humidity,
-        windSpeed: wind_speed,
-        description,
+        weather: [
+          {
+            icon,
+          },
+        ],
+      } = day;
+      const weekDay = this._getDayFromTime(dt);
+      return {
+        weekDay,
+        tempDay: Math.round(tempDay),
+        tempNight: Math.round(tempNight),
+        humidity,
         icon,
-      },
-      daily,
+      };
+    });
+
+    const forecastThreeDays = forecastWeek.slice(1, 4);
+
+    const today = {
+      temp: Math.round(temp),
+      feelsLike: Math.round(feels_like),
+      humidityToday,
+      windSpeed: Math.round(wind_speed),
+      description,
+      iconToday,
+    };
+
+    return {
+      today,
+      daily: forecastThreeDays,
     };
   };
 }

@@ -6,17 +6,17 @@ const ForecastToday = ({
   today: {
     temp,
     feelsLike,
-    humidity,
+    humidityToday,
     windSpeed,
     description,
-    icon,
+    iconToday,
   },
 }) => {
-  const iconURL = `http://openweathermap.org/img/wn/${icon}@4x.png`;
+  const iconURL = `http://openweathermap.org/img/wn/${iconToday}@4x.png`;
   return (
     <div className = "forecast__today">
       <div className = "forecast__today_temp">
-        { temp }
+        { temp }°C
       </div>
       <div className = "forecast__today_details">
         <div
@@ -25,7 +25,7 @@ const ForecastToday = ({
         <div>{ description }</div>
         <div>Feels like: { feelsLike }°C</div>
         <div>Wind: { windSpeed } m/s</div>
-        <div>Humidity: { humidity }%</div>
+        <div>Humidity: { humidityToday }%</div>
       </div>
     </div>
   );
