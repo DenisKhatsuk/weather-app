@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import LocationWrapper from '../location-wrapper';
 import ErrorBoundary from '../error-boundary';
-import SearchForm from '../search-form';
+import SearchFormWrapper from '../search-form-wrapper';
 import ForecastWrapper from '../forecast-wrapper';
 import MapWrapper from '../map-wrapper';
 
@@ -13,7 +13,7 @@ const App = () => {
     <Fragment>
       <h1>Fancy Weather App</h1>
       <ErrorBoundary>
-        <SearchForm />
+        <SearchFormWrapper />
       </ErrorBoundary>
       <ErrorBoundary>
         <LocationWrapper />
