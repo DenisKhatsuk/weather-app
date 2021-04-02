@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import LocationWrapper from '../location-wrapper';
 import ErrorBoundary from '../error-boundary';
 import SearchForm from '../search-form';
+import Forecast from '../forecast-wrapper';
 
 import './app.scss';
 
@@ -15,6 +16,9 @@ const App = () => {
       </ErrorBoundary>
       <ErrorBoundary>
         <LocationWrapper />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Forecast />
       </ErrorBoundary>
     </Fragment>
   );
