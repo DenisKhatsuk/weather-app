@@ -35,7 +35,7 @@ export default class ForecastService {
         description,
         icon,
       },
-      forecast: daily,
+      daily,
     };
   };
 }
