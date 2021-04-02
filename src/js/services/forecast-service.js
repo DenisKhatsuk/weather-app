@@ -3,15 +3,15 @@ export default class ForecastService {
 
   _apiBase = 'https://api.openweathermap.org/data/2.5/onecall?';
 
-  getForecastData = async (lat, long) => {
-    const requestLink = `${this._apiKey}lat=${lat}&lon=${long}&lang=en&units=metric&APPID=${this._apiKey}`;
+  getForecast = async (lat, long) => {
+    const requestLink = `${this._apiBase}lat=${lat}&lon=${long}&lang=en&units=metric&APPID=${this._apiKey}`;
     const res = await fetch(requestLink);
     if (!res.ok) throw new Error(`Could not fetch data from forecast service. Server respond status ${res.status}.`);
     const forecast = await res.json();
-    return this._transformForecastData(forecast);
+    return this._transformForecast(forecast);
   }
 
-  _transformForecastData = ({
+  _transformForecast = ({
     current: {
       temp,
       feels_like, /* eslint-disable-line */
